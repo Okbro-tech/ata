@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATA SocialMedia Home</title>
+  <link rel="stylesheet" href="style.css">
+<body>
+  <header class="header">
+    <h1 class="logo">ATA SocialMedia</h1>
+    <nav class="nav">
+      <ul class="nav-bar">
+        <li class="profile-container">
+          <a href="/profile">Profile</a>
+          <div class="profile-dropdown">
+            <a href="/logout">Log Out</a>
+          </div>
+        </li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Settings</a></li>
+        <li class="upload-container">
+            <!-- Upload Trigger -->
+            <button id="upload-trigger">Upload</button>
+            <div id="upload-options" class="upload-options">
+             >
+                <form action="/upload/" method="POST" enctype="multipart/form-data" id="upload-form">
+                    {% csrf_token %}
+                    <input type="file" id="file-input" name="image_upload" hidden />
+                    <label id="file-name" class="file-name">Keine Datei ausgewählt</label>
+    
+                    <!-- Upload-Button -->
+                    <button type="button" id="select-button">Datei auswählen</button>
+                    <button type="button" id="upload-button" disabled>Hochladen</button>
+                </form>
+            </div>
+        </li>
+    </ul>
+
+            </nav>
+  </header>
+
+  <div class="home-container">
+    {% for post in posts %}
+    <div class="post">
+      <div class="post-header">
+        <img class="user-avatar"  src="https://picsum.photos/50/50" alt="User Avatar" id="profilimg" >
+        <div class="user-details">
+          <h3 class="username">@{{post.user}}</h3>
+          <p class="post-date">2 hours ago</p>
+        </div>
+      </div>
+
+      <div class="post-content">
+        <p>"Geist auf der Suche nach Wahrheit 📜🔍"</p>
+        <img class="post-image"  alt="Post Content">
+
+      </div>
+
+      <div class="post-actions">
+        <button class="like-btn">Like (<span class="like-count">0</span>)</button>
+        <button class="comment-btn">Comment</button>
+        <button class="repost-btn">Repost</button>
+      </div>
+
+      <div class="comments-section">
+        <div class="comment">
+          <img class="comment-avatar" src="https://picsum.photos/30/30" alt="Comment Avatar">
+          <p class="comment-text"><strong>Mephisto:</strong> "Ein wunderbares Bild, Faust!"</p>
+        </div>
+      
+        <!-- Eingabefeld für neue Kommentare -->
+        <div class="new-comment">
+          <input type="text" class="comment-input" placeholder="Write a comment..." />
+          <button class="comment-submit-btn">Post</button>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    <div class="post">
+      <div class="post-header">
+        <img class="user-avatar" src="https://picsum.photos/50/50?random=2" alt="User Avatar">
+        <div class="user-details">
+          <h3 class="username">Helena</h3>
+          <p class="post-date">1 day ago</p>
+        </div>
+      </div>
+
+      <div class="post-content">
+        <p>"Die Magie der Bilder ✨"</p>
+        <video class="post-video" controls>
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <div class="post-actions">
+        <button class="like-btn">Like (<span class="like-count">0</span>)</button>
+        <button class="comment-btn">Comment</button>
+        <button class="repost-btn">Repost</button>
+      </div>
+
+      <div class="comments-section">
+        <div class="comment">
+          <img class="comment-avatar" src="https://picsum.photos/30/30" alt="Comment Avatar">
+          <p class="comment-text"><strong>Mephisto:</strong> "Ein wunderbares Bild, Faust!"</p>
+        </div>
+      
+        <!-- Eingabefeld für neue Kommentare -->
+        <div class="new-comment">
+          <input type="text" class="comment-input" placeholder="Write a comment..." />
+          <button class="comment-submit-btn">Post</button>
+        </div>
+      </div>
+
+  <footer class="footer">
+    <p>Andrii Bakai & Alexandr Tanasiychuk</p>
+  </footer>
+
+  <script src="inst.js"></script>
+</body>
+</html>

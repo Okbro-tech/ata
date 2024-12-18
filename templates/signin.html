@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATA Login</title>
+    <link rel="stylesheet" href="{% static 'css/design.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="form-wrapper">
+            <h1>Log in</h1>
+            <div>
+                {% for message in messages %}
+                <h5>
+                    {{ message }}
+                </h5>
+                {% endfor %}
+            </div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <!-- Username Input -->
+                <div class="input-group">
+                    <input type="text" name="username" placeholder="Username" required>
+                </div>
+
+                <!-- Password Input -->
+                <div class="input-group password-container">
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                    <span class="toggle-password" onclick="togglePasswordVisibility('password')">👁️</span>
+                </div>
+
+                <!-- Remember Me and Forgot Password -->
+                <div class="options">
+                    <div class="checkbox">
+                        <input type="checkbox" id="remember-me" checked>
+                        <label for="remember-me">Remember Me</label>
+                    </div>
+                    <a href="#">Forgot Your Password?</a>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn-submit">Login</button>
+
+                <!-- Registration Link -->
+                <div class="footer-text">
+                    <p>Not registered? <a href="/signup">Create an account</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function togglePasswordVisibility(inputId) {
+            const input = document.getElementById(inputId);
+            if (input.type === "password") {
+                input.type = "text";
+            } else {
+                input.type = "password";
+            }
+        }
+    </script>
+</body>
+</html>

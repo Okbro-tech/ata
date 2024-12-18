@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATA Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+</head>
+<body>
+    <div class="container">
+              
+        <div>
+            <div >
+                <h1> Log in</h1>
+                    <div>
+                        {% for message in messages %}
+                        <h5>
+                            {{message}}
+                        </h5>
+                        {% endfor %}
+                    </div>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <input name="username" type="text" placeholder="Username">
+                        <input name="password" type="text" placeholder="Password">
+                        <div>
+                            <div class="checkbox">
+                                <input type="checkbox" id="checkbox1" checked>
+                                <label for="chekcbox1"><span class="checkbox-icon"></span>Remember Me</label>
+                            </div>
+                            <a href="#"> Forgot Your Password? </a>
+                        </div>
+                        <button type="submit" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Login</button>
+                        <div class="text-center mt-5 space-x-2">
+                            <p class="text-base"> Not registered? <a href="/signup" class=""> Create an account </a></p>
+
+                        </div>
+                    </form>
+
+            </div>
+        </div>
+    </div>
+
+
+</body></html>

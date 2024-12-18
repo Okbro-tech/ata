@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+<body>
+  <header class="header">
+    <h1 class="logo">ATA SocialMedia</h1>
+    <nav class="nav">
+      <ul>
+        <li><a href="#">Profile</a></li>
+        <li><a href="/home">Home</a></li>  
+        <li><a href="#">Settings</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="profile-container">
+    <div class="profile-header">
+      <img class="profile-image" src="{% static 'images/faust.jpg'%}" alt="Profile Picture">
+      <div class="profile-details">
+        <h2 class="profile-name">DrFaust</h2>
+        <p class="profile-bio">"Geist auf der Suche nach Wahrheit 📜🔍 | Zwischen Wissen und Versuchung – Fausts Reise ins Unbekannte ⚛️😈 | Ein Pakt, der alles verändert.</p>
+        <div class="profile-stats">
+          <div class="stat"><span id="subscriberCount">0</span><p >Subscribers</p></div>
+          <div class="stat"><span id="photoCount">200</span><p>Photos</p></div>
+          <div class="stat"><span id="postCount">150</span><p>Posts</p></div>
+        </div>
+        <div class="profile-actions">
+          <button id="subbtn" class="action-btn">Subscribe</button>
+          <button id="mesbtn" class="action-btn">Message</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs-container">
+      <button class="tab active">Images</button>
+      <button class="tab">Videos</button>
+      <button class="tab">About</button>
+    </div>
+
+    <div class="image-gallery">
+      
+      <div class="image-item"><img src="{%static 'images/faustgold.jpg' %}" alt="Post"></div>
+      <div class="image-item"><img src="{%static 'images/huhu.webp' %}" alt="Post"></div>
+      
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Andrii Bakai & Alexandr Tanasiychuk</p>
+  </footer>
+
+  <script src="skript.js"></script>
+</body>
+</html>
