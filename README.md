@@ -26,15 +26,6 @@ Make the platform reflect **your style**.
 
 ---
 
-### 🌐 **Decentralized Hosting**  
-Take charge of your hosting:  
-- **Host it yourself** for full control over your data.  
-- Or **join a network** of shared servers for convenience.  
-
-No single point of failure—your platform, your choice.  
-
----
-
 ### 🌍 **Community Driven**  
 Built, improved, and supported by contributors from all over the world.  
 - Collaborative development ensures better features.  
