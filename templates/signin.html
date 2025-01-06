@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ATA Login</title>
-    <link rel="stylesheet" href="{% static 'css/design.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reglog.css' %}"> 
 </head>
 <body>
     <div class="container">
@@ -25,39 +25,39 @@
                     <input type="text" name="username" placeholder="Username" required>
                 </div>
 
-                <!-- Password Input -->
-                <div class="input-group password-container">
-                    <input type="password" name="password" id="password" placeholder="Password" required>
-                    <span class="toggle-password" onclick="togglePasswordVisibility('password')">👁️</span>
-                </div>
-
-                <!-- Remember Me and Forgot Password -->
-                <div class="options">
-                    <div class="checkbox">
-                        <input type="checkbox" id="remember-me" checked>
-                        <label for="remember-me">Remember Me</label>
-                    </div>
-                    <a href="#">Forgot Your Password?</a>
-                </div>
-
-                <!-- Submit Button -->
-                <button type="submit" class="btn-submit">Login</button>
-
-                <!-- Registration Link -->
-                <div class="footer-text">
-                    <p>Not registered? <a href="/signup">Create an account</a></p>
-                </div>
-            </form>
+ <!-- Password Input -->
+        <div class="input-group password-container" style="position: relative;">
+            <input type="password" name="password" id="password" placeholder="Password" >
+            <span class="toggle-password" onclick="togglePasswordVisibility()">
+                <img id="eye-icon" src="{% static 'images/hide.png' %}" alt="Show Password"> 
+            </span>
+        </div>
+        <!-- Remember Me and Forgot Password -->
+        <div class="options">
+            <div class="checkbox-container">
+                <input type="checkbox" id="remember-me">
+                <label for="remember-me">Remember Me</label>
+            </div>
+            <a href="#">Forgot Your Password?</a>
+        </div>
+        <!-- Login Button -->
+        <button class="btn-submit">Login</button>
+        <!-- Footer -->
+        <div class="footer-text">
+            <p>Not registered? <a href="/signup">Create an account</a></p>
         </div>
     </div>
-
     <script>
-        function togglePasswordVisibility(inputId) {
-            const input = document.getElementById(inputId);
-            if (input.type === "password") {
-                input.type = "text";
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const eyeIcon = document.getElementById('eye-icon');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.src = "{% static 'images/view.png' %}"; // Switch to 'hide' icon
             } else {
-                input.type = "password";
+                passwordInput.type = 'password';
+                eyeIcon.src = "{% static 'images/hide.png' %}"; // Switch back to 'show' icon
             }
         }
     </script>

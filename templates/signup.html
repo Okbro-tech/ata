@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ATA Register</title>
-    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reglog.css' %}">
 </head>
 <body>
     <div class="container">
@@ -26,43 +26,46 @@
                 </div>
 
                 <!-- Password Input -->
-                <div class="input-group password-group">
-                    <input type="password" name="password" id="password" placeholder="Password" required>
-                    <span class="toggle-password" onclick="togglePasswordVisibility('password')">👁️</span>
-                </div>
+                <!-- Password Input -->
+<!-- Password Input -->
+<div class="input-group password-container" style="position: relative;">
+    <input type="password" name="password" id="password" placeholder="Password" required>
+    <span class="toggle-password" onclick="togglePasswordVisibility('password', 'eye-icon')">
+        <img id="eye-icon" src="{% static 'images/hide.png' %}" alt="Show Password">
+    </span>
+</div>
 
-                <!-- Confirm Password Input -->
-                <div class="input-group password-group">
-                    <input type="password" name="password2" id="confirm-password" placeholder="Confirm Password" required>
-                    <span class="toggle-password" onclick="togglePasswordVisibility('confirm-password')">👁️</span>
-                </div>
+<!-- Confirm Password Input -->
+<div class="input-group password-container" style="position: relative;">
+    <input type="password" name="password2" id="confirm-password" placeholder="Confirm Password" required>
+    <span class="toggle-password" onclick="togglePasswordVisibility('confirm-password', 'confirm-eye-icon')">
+        <img id="confirm-eye-icon" src="{% static 'images/hide.png' %}" alt="Show Password">
+    </span>
+</div>
 
-                <!-- Terms and Conditions -->
-                <div class="checkbox-group">
-                    <input type="checkbox" id="terms" required>
-                    <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
-                </div>
+<!-- Register Button -->
+<button class="btn-submit">Register</button>
 
-                <!-- Submit Button -->
-                <button type="submit" class="btn-submit">Register</button>
+<!-- Footer -->
+<div class="footer-text">
+    <p>Already registered? <a href="/signin">Log in</a></p>
+</div>
 
-                <!-- Link to Login -->
-                <div class="footer-text">
-                    <p>Already have an account? <a href="/signin">Log in</a></p>
-                </div>
-            </form>
-        </div>
-    </div>
+<script>
+    function togglePasswordVisibility(inputId, iconId) {
+        const input = document.getElementById(inputId);
+        const eyeIcon = document.getElementById(iconId);
 
-    <script>
-        function togglePasswordVisibility(inputId) {
-            const input = document.getElementById(inputId);
-            if (input.type === "password") {
-                input.type = "text";
-            } else {
-                input.type = "password";
-            }
+        if (input.type === 'password') {
+            input.type = 'text';
+            eyeIcon.src = "{% static 'images/view.png' %}"; // Switch to 'view' icon
+        } else {
+            input.type = 'password';
+            eyeIcon.src = "{% static 'images/hide.png' %}"; // Switch back to 'hide' icon
         }
-    </script>
+    }
+</script>
+
+
 </body>
 </html>

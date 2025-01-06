@@ -27,9 +27,11 @@ SECRET_KEY = 'django-insecure-0q+t8(1yoru8_9xnz*fto7m%u%s_c_!*ctz!h9fv$ul45h-uiv
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '83e9-95-91-230-140.ngrok-free.app',
+    'localhost', 
+    
     '127.0.0.1',
-    '6a79-141-91-210-29.ngrok-free.app'
+    
+    'a4ea-95-90-250-244.ngrok-free.app'
     ]
 
 
@@ -56,7 +58,9 @@ MIDDLEWARE = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://6a79-141-91-210-29.ngrok-free.app"
+   
+    "https://a4ea-95-90-250-244.ngrok-free.app"
+    
 ]
 
 
@@ -77,7 +81,7 @@ TEMPLATES = [
         },
     },
 ]
-
+ 
 WSGI_APPLICATION = 'atasoc.wsgi.application'
 
 

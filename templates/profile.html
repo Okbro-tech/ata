@@ -2,59 +2,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profile</title>
-  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ user_profile.user.username }}'s Profile</title>
 
+    <!-- Link to the profile CSS file with dynamic versioning -->
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}?v={% now 'YmdHis' %}">
+</head>
 <body>
-  <header class="header">
-    <h1 class="logo">ATA SocialMedia</h1>
-    <nav class="nav">
-      <ul>
-        <li><a href="#">Profile</a></li>
-        <li><a href="/home">Home</a></li>  
-        <li><a href="#">Settings</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- Header -->
+    <header class="header">
+        <h1 class="logo">ATA SocialMedia</h1>
+        <nav class="nav">
+            <ul>
+                <li><a href="/profile/">Profile</a></li>
+                <li><a href="/home/">Home</a></li>
+                <li><a href="/settings/">Settings</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <div class="profile-container">
-    <div class="profile-header">
-      <img class="profile-image" src="{% static 'images/faust.jpg'%}" alt="Profile Picture">
-      <div class="profile-details">
-        <h2 class="profile-name">DrFaust</h2>
-        <p class="profile-bio">"Geist auf der Suche nach Wahrheit 📜🔍 | Zwischen Wissen und Versuchung – Fausts Reise ins Unbekannte ⚛️😈 | Ein Pakt, der alles verändert.</p>
-        <div class="profile-stats">
-          <div class="stat"><span id="subscriberCount">0</span><p >Subscribers</p></div>
-          <div class="stat"><span id="photoCount">200</span><p>Photos</p></div>
-          <div class="stat"><span id="postCount">150</span><p>Posts</p></div>
+    <!-- Profile Section -->
+    <div class="profile-container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <!-- Profile Image -->
+            <img class="profile-image" src="{{ user_profile.profileimg.url }}" alt="Profile Picture">
+
+            <div class="profile-details">
+                <!-- User Details -->
+                <h2 class="profile-name">{{ user_profile.user.username }}</h2>
+                <p class="profile-bio">{{ user_profile.bio }}</p>
+                <p class="profile-location"><strong>Location:</strong> {{ user_profile.location }}</p>
+
+                <!-- Profile Stats -->
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="subscriber-count">{{ user_profile.subscribers.count }}</span>
+                        <p>Followers</p>
+                    </div>
+                    <div class="stat">
+                        <span>{{ user_posts.count }}</span>
+                        <p>Photos</p>
+                    </div>
+                    <div class="stat">
+                        <span>{{ user_posts.count }}</span>
+                        <p>Posts</p>
+                    </div>
+                </div>
+
+                <!-- Subscribe Button -->
+                {% if user_profile.user != request.user %}
+                    <button class="subscribe-btn"
+                        data-subscriber-id="{{ request.user.id }}" 
+                        data-subscribed-to-id="{{ user_profile.user.id }}"
+                        onclick="toggleSubscription(this)">
+                        {% if user_profile in request.user.profile.subscriptions.all %}
+                            Unsubscribe
+                        {% else %}
+                            Subscribe
+                        {% endif %}
+                    </button>
+                {% else %}
+                    <p>You cannot subscribe to yourself.</p>
+                {% endif %}
+            </div>
         </div>
-        <div class="profile-actions">
-          <button id="subbtn" class="action-btn">Subscribe</button>
-          <button id="mesbtn" class="action-btn">Message</button>
+
+        <!-- User Posts Section -->
+        <div class="user-posts">
+            <h2>Your Posts</h2>
+            {% if user_posts %}
+                <div class="image-gallery">
+                    {% for post in user_posts %}
+                        <div class="image-item">
+                            <!-- Image Thumbnail -->
+                            <img src="{{ post.image.url }}" alt="{{ post.caption }}" class="post-image" onclick="openFullScreen('{{ post.id }}')">
+                            <p>{{ post.caption }}</p>
+                            <small>Posted on: {{ post.created_at }}</small>
+
+                            <!-- Delete Form (Visible for Post Owner) -->
+                            {% if post.user == request.user %}
+                                <form method="post" action="{% url 'delete_post' post.id %}" id="delete-form-{{ post.id }}">
+                                    {% csrf_token %}
+                                </form>
+                            {% endif %}
+
+                            <!-- Modal for Fullscreen Image -->
+                            <div id="modal-{{ post.id }}" class="modal">
+                                <div class="modal-content">
+                                    <div class="modal-left">
+                                        <img src="{{ post.image.url }}" alt="{{ post.caption }}" class="full-screen-image">
+                                    </div>
+                                    <div class="modal-right">
+                                        <h3 class="post-caption">{{ post.caption }}</h3>
+                                        <small class="timestamp">Posted on: {{ post.created_at }}</small>
+
+                                        <!-- Delete Button inside Modal -->
+                                        {% if post.user == request.user %}
+                                            <button onclick="submitDelete('{{ post.id }}')" class="delete-btn">Delete Post</button>
+                                        {% endif %}
+                                        <button onclick="closeFullScreen('{{ post.id }}')" class="close-btn">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No posts to display.</p>
+            {% endif %}
         </div>
-      </div>
     </div>
 
-    <div class="tabs-container">
-      <button class="tab active">Images</button>
-      <button class="tab">Videos</button>
-      <button class="tab">About</button>
-    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 ATA SocialMedia</p>
+    </footer>
 
-    <div class="image-gallery">
-      
-      <div class="image-item"><img src="{%static 'images/faustgold.jpg' %}" alt="Post"></div>
-      <div class="image-item"><img src="{%static 'images/huhu.webp' %}" alt="Post"></div>
-      
-    </div>
-  </div>
-
-  <footer class="footer">
-    <p>Andrii Bakai & Alexandr Tanasiychuk</p>
-  </footer>
-
-  <script src="skript.js"></script>
+    <!-- Include Profile JS -->
+    <script src="{% static 'js/profile.js' %}"></script>
 </body>
 </html>

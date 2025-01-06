@@ -1,0 +1,226 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #121212; /* Dunkelgrauer Hintergrund */
+  color: #f1f1f1; /* Heller Text */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1e1e1e; /* Dunkler Grauton */
+  padding: 20px 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtile Schatten */
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff; /* Weiß für das Logo */
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: #f1f1f1; /* Weißer Text */
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav ul li a:hover {
+  color: #ddd; /* Helles Grau beim Hover */
+}
+
+/* Profile Container */
+.profile-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #333; /* Dunkles Grau für den Container */
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Subtile Schatten */
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  background: #1e1e1e; /* Dunkler Hintergrund */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Subtile Schatten */
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #bbb; /* Helles Grau für den Rand */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3); /* Subtile Schatten für das Bild */
+}
+
+.profile-details {
+  flex-grow: 1;
+  color: #f1f1f1; /* Weißer Text */
+}
+
+.profile-name {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #ffffff; /* Weiß für den Namen */
+}
+
+.profile-bio {
+  font-size: 18px;
+  color: #ccc; /* Helles Grau für die Bio */
+  margin-bottom: 15px;
+}
+
+.profile-location {
+  color: #bbb; /* Sehr helles Grau für den Standort */
+  margin-bottom: 15px;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat span {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  color: #f1f1f1; /* Weißer Text */
+}
+
+.stat p {
+  font-size: 14px;
+  color: #bbb; /* Sehr helles Grau für den Text */
+}
+
+/* Modern Subscribe Button */
+.subscribe-btn {
+  padding: 14px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  background-color: #555; /* Dunkelgrauer Button */
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.subscribe-btn:hover {
+  background-color: #444; /* Noch dunklerer Grau bei Hover */
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.subscribe-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Post Section */
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.image-item {
+  background-color: #444; /* Dunkler Hintergrund für Posts */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.image-item img {
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.image-item img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.image-item p {
+  color: #f1f1f1; /* Weißer Text für die Bildbeschreibung */
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.image-item small {
+  color: #bbb; /* Sehr helles Grau für das Veröffentlichungsdatum */
+  font-size: 14px;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #1e1e1e; /* Dunkler Footer-Hintergrund */
+  color: #fff;
+  margin-top: 40px;
+  border-radius: 15px 15px 0 0;
+  font-size: 14px;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+
+  .nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

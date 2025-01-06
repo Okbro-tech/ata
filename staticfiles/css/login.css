@@ -1,0 +1,121 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background: #000; /* Black background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #fff; /* White text for contrast */
+}
+
+/* Container Styles */
+.container {
+    background: #1c1c1c; /* Dark gray for the form container */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    color: #fff; /* Ensures text inside container is white */
+}
+
+/* Header Styles */
+.container h1 {
+    text-align: center;
+    color: yellow; /* Pink color for the heading */
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #555; /* Gray border for inputs */
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #2c2c2c; /* Darker gray input background */
+    color: #fff;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+    border-color: yellow;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 77, 126, 0.5);
+}
+
+/* Checkbox Section */
+.checkbox {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.checkbox input {
+    margin-right: 10px;
+    accent-color: yellow; /* Pink checkbox */
+}
+
+.checkbox label {
+    font-size: 0.9rem;
+    color: #ccc; /* Light gray for text */
+}
+
+/* Forgot Password Link */
+a {
+    color: yellow;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Login Button */
+button[type="submit"] {
+    background: linear-gradient(135deg, yellow, #ff758c);
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button[type="submit"]:hover {
+    opacity: 0.7;
+    transform: translateY(-2px);
+}
+
+/* Footer Section (Registration Link) */
+.text-center {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #ccc; /* Light gray */
+}
+
+.text-center a {
+    color: yellow;
+    font-weight: bold;
+}
+
+.text-center a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+.text-base{
+    color: white;
+    font-weight: bold;
+
+}

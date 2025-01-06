@@ -5,7 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ATA SocialMedia Home</title>
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>{{ user.username }}'s Social Media</title>
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}?v={% now 'YmdHis' %}">
+</head>
 <body>
   <header class="header">
     <h1 class="logo">ATA SocialMedia</h1>
@@ -17,59 +20,63 @@
             <a href="/logout">Log Out</a>
           </div>
         </li>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Settings</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/settings">Settings</a></li>
         <li class="upload-container">
-            <!-- Upload Trigger -->
-            <button id="upload-trigger">Upload</button>
-            <div id="upload-options" class="upload-options">
-          
-              <form action="/upload/" method="POST" enctype="multipart/form-data" id="upload-form">
-                  {% csrf_token %}
-                  <input type="file" id="file-input" name="image_upload" hidden />
-                  <label id="file-name" class="file-name">Keine Datei ausgewählt</label>
-  
-                  <!-- Upload-Button -->
-                  <button type="button" id="select-button">Datei auswählen</button>
-                  <button type="button" id="upload-button" >Hochladen</button>
-              </form>
-            </div>
+          <button id="upload-trigger">Upload</button>
+          <div id="upload-options" class="upload-options">
+            <form action="/upload/" method="POST" enctype="multipart/form-data" id="upload-form">
+              {% csrf_token %}
+              <input type="file" id="file-input" name="image_upload" hidden />
+              <label id="file-name" class="file-name">No file selected</label>
+              <button type="button" id="select-button">Select File</button>
+              <button type="button" id="upload-button">Upload</button>
+              <input type="text" name="caption" id="caption-input" placeholder="Enter caption..." />
+            </form>
+          </div>
         </li>
-    </ul>
-
-            </nav>
+      </ul>
+    </nav>
   </header>
 
   <div class="home-container">
     {% for post in posts %}
     <div class="post">
       <div class="post-header">
-        <img class="user-avatar"  src="https://picsum.photos/50/50" alt="User Avatar" id="profilimg" >
+        <img class="user-avatar" src="{{ post.user.profile.profileimg.url }}" alt="User Avatar">
         <div class="user-details">
-          <h3 class="username">@{{post.user}}</h3>
-          <p class="post-date">2 hours ago</p>
+          <h3 class="username"> <a href="{% url 'user_profile' user_id=post.user.id %}">@{{ post.user.username }}</a></h3>
+          <p class="post-date">{{ post.created_at|timesince }} ago</p>
         </div>
       </div>
 
       <div class="post-content">
         <p>{{ post.caption }}</p>
-        <img class="post-image" src="{{ post.image.url }}" alt="Post Content">
-
+        {% if post.image %}
+          <img class="post-image" src="{{ post.image.url }}" alt="Post Content">
+        {% endif %}
+        {% if post.video %}
+          <video class="post-video" controls>
+            <source src="{{ post.video.url }}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        {% endif %}
       </div>
 
       <div class="post-actions">
-        <button class="like-btn">Like (<span class="like-count">0</span>)</button>
+        <button class="like-btn">Like (<span class="like-count">{{ post.no_of_likes }}</span>)</button>
         <button class="comment-btn">Comment</button>
         <button class="repost-btn">Repost</button>
       </div>
 
       <div class="comments-section">
+        {% for comment in post.comments.all %}
         <div class="comment">
-          <img class="comment-avatar" src="https://picsum.photos/30/30" alt="Comment Avatar">
-          <p class="comment-text"><strong>Mephisto:</strong> "Ein wunderbares Bild, Faust!"</p>
+          <img class="comment-avatar" src="{{ comment.user.profile.profileimg.url }}" alt="Comment Avatar">
+          <p class="comment-text"><strong>{{ comment.user.username }}:</strong> {{ comment.text }}</p>
         </div>
-      
-        <!-- Eingabefeld für neue Kommentare -->
+        {% endfor %}
+
         <div class="new-comment">
           <input type="text" class="comment-input" placeholder="Write a comment..." />
           <button class="comment-submit-btn">Post</button>
@@ -77,44 +84,10 @@
       </div>
     </div>
     {% endfor %}
-    <div class="post">
-      <div class="post-header">
-        <img class="user-avatar" src="https://picsum.photos/50/50?random=2" alt="User Avatar">
-        <div class="user-details">
-          <h3 class="username">Helena</h3>
-          <p class="post-date">1 day ago</p>
-        </div>
-      </div>
-
-      <div class="post-content">
-        <p>"Die Magie der Bilder ✨"</p>
-        <video class="post-video" controls>
-          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-
-      <div class="post-actions">
-        <button class="like-btn">Like (<span class="like-count">0</span>)</button>
-        <button class="comment-btn">Comment</button>
-        <button class="repost-btn">Repost</button>
-      </div>
-
-      <div class="comments-section">
-        <div class="comment">
-          <img class="comment-avatar" src="https://picsum.photos/30/30" alt="Comment Avatar">
-          <p class="comment-text"><strong>Mephisto:</strong> "Ein wunderbares Bild, Faust!"</p>
-        </div>
-      
-        <!-- Eingabefeld für neue Kommentare -->
-        <div class="new-comment">
-          <input type="text" class="comment-input" placeholder="Write a comment..." />
-          <button class="comment-submit-btn">Post</button>
-        </div>
-      </div>
+  </div>
 
   <footer class="footer">
-    <p>Andrii Bakai & Alexandr Tanasiychuk</p>
+    <p>&copy; 2024 Andrii Bakai & Alexandr Tanasiychuk. All rights reserved.</p>
   </footer>
 
   <script src="{% static 'js/inst.js' %}"></script>
