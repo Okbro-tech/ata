@@ -6,11 +6,7 @@ Our platform is:
 - 🚀 **Open-source**: Transparent, collaborative, and secure.  
 - 🔒 **Privacy-first**: Your data, your rules.  
 
-We believe in innovation, transparency, and the power of a global community.  
-
----
-
-## 🌟 **Features of Our Platform**  
+ 
 
 ### 🔒 **Privacy-First**  
 Your data stays in **your control**. You decide what to share, when to share, and with whom.  
@@ -19,12 +15,6 @@ Your data stays in **your control**. You decide what to share, when to share, an
 
 ---
 
-### 🎨 **Customizable Themes**  
-Make the platform reflect **your style**.  
-- Choose colors, fonts, and layouts.  
-- Create a social experience that’s truly **yours**.  
-
----
 
 ### 🌍 **Community Driven**  
 Built, improved, and supported by contributors from all over the world.  
@@ -80,11 +70,6 @@ This project is licensed under the **MIT License**—feel free to use, modify, a
 
 ---
 
-### 🌟 **Join the Future of Social Media**  
-Customize. Connect. Control.  
-Empower yourself with **OpenSource Social Media**—where you and your data come first.  
-
-🔗 [Start Now](#) | 🌍 [Contribute on GitHub](#)
 
 
 
