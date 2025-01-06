@@ -1,15 +1,7 @@
-# 🌐 **OpenSource Social Media**  
+# 🌐 **ATA OpenSource Social Media**  
 
 Welcome to **ATA OpenSource Social Media**—a fully customizable and privacy-focused social networking platform.  
 Connect with people **without compromising on data security**.  
-Our platform is:  
-- 🚀 **Open-source**: Transparent, collaborative, and secure.  
-- 🔒 **Privacy-first**: Your data, your rules.  
-
-
----
-
-## 🌟 **Features of Our Platform**  
 
 ### 🔒 **Privacy-First**  
 Your data stays in **your control**. You decide what to share, when to share, and with whom.  
@@ -18,12 +10,6 @@ Your data stays in **your control**. You decide what to share, when to share, an
 
 ---
 
-### 🎨 **Customizable Themes**  
-Make the platform reflect **your style**.  
-- Choose colors, fonts, and layouts.  
-- Create a social experience that’s truly **yours**.  
-
----
 
 ### 🌍 **Community Driven**  
 Built, improved, and supported by contributors from all over the world.  
@@ -43,8 +29,6 @@ Join us and shape the future of social media!
 - 💡 **Innovation**: Developers worldwide bring fresh ideas, ensuring constant growth.  
 - 💰 **Cost-effective**: Open-source tools are often free, saving you resources.  
 
-With open-source, **you are not locked into a single company’s decisions**—it’s freedom for users and developers alike.  
-
 ---
 
 ## 🚀 **Quick Start**  
@@ -60,7 +44,7 @@ Ensure you have the following installed:
 Our platform is powered by modern technologies:  
 
 - **Frontend**: HTML, CSS, JavaScript  
-- **Backend**: Python Django
+- **Backend**: Python  
 
 ---
 
@@ -79,8 +63,6 @@ This project is licensed under the **MIT License**—feel free to use, modify, a
 
 ---
 
-
-🔗 [Start Now](#) | 🌍 [Contribute on GitHub](#)
 
 
 
