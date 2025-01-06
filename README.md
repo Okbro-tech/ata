@@ -1,12 +1,7 @@
-# 🌐 **OpenSource Social Media**  
+# 🌐 **ATA OpenSource Social Media**  
 
-Welcome to **OpenSource Social Media**—a fully customizable and privacy-focused social networking platform.  
+Welcome to **ATA OpenSource Social Media**—a fully customizable and privacy-focused social networking platform.  
 Connect with people **without compromising on data security**.  
-Our platform is:  
-- 🚀 **Open-source**: Transparent, collaborative, and secure.  
-- 🔒 **Privacy-first**: Your data, your rules.  
-
- 
 
 ### 🔒 **Privacy-First**  
 Your data stays in **your control**. You decide what to share, when to share, and with whom.  
